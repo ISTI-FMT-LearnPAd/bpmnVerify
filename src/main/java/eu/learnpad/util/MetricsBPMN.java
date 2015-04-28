@@ -1,21 +1,73 @@
 package eu.learnpad.util;
 
 import models.graphbased.directed.bpmn.BPMNDiagram;
+import models.graphbased.directed.bpmn.elements.Event;
+import models.graphbased.directed.bpmn.elements.Event.EventType;
 
 public class MetricsBPMN {
 
-	BPMNDiagram diagram;
-	
+	private BPMNDiagram diagram;
+	private int numStartEvent=0;
+	private int numInteEvent=0;
+	private int numEndEvent=0;
+
 	public MetricsBPMN(BPMNDiagram graph) {
 		diagram = graph;
+		CountEvent();
 	}
-	
+
 	public int NumberOfActivity(){	
 		return diagram.getActivities().size();
 	}
-	
-	public int NumberOfGateway(){	
+
+	public int NumbersOfGateways(){	
 		return diagram.getActivities().size();
 	}
+	public int NumbersOfStartEvents(){	
+
+		return numStartEvent;
+	}
+
+	private void CountEvent(){
+		for(Event e: diagram.getEvents()){
+			if (e.getEventType().equals(EventType.START)){
+				numStartEvent++;
+			}else{
+				if (e.getEventType().equals(EventType.END)){
+					numEndEvent++;
+				}else{
+					if (e.getEventType().equals(EventType.INTERMEDIATE)){
+						numInteEvent++;
+					}
+				}
+			}
+		}
+	}
+
+
+	public int NumbersOfEndEvents(){	
+		return numEndEvent;
+	}
+
+	public int NumbersOfIntermediateEvents(){	
+		return numInteEvent;
+	}
+	
+	public int NumbersOfPools(){	
+		return diagram.getPools().size();
+	}
+
+	@Override
+	public String toString() {
+		return "MetricsBPMN [diagram=" + diagram + ", NumberOfActivity()="
+				+ NumberOfActivity() + ", NumbersOfGateways()="
+				+ NumbersOfGateways() + ", NumbersOfStartEvents()="
+				+ NumbersOfStartEvents() + ", NumbersOfEndEvents()="
+				+ NumbersOfEndEvents() + ", NumbersOfIntermediateEvents()="
+				+ NumbersOfIntermediateEvents() + ", NumbersOfPools()="
+				+ NumbersOfPools() + "]";
+	}
+	
+	
 
 }
