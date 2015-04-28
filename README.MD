@@ -1,4 +1,4 @@
-Repo for package Reader XML BPMN 2.0 
+Tool Prototype for Validation and verification of BPMN File for Learnpad Project
 
 
 
