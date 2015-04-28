@@ -3,7 +3,7 @@
   <groupId>cnr.learnpad</groupId>
   <artifactId>bpmnVerify</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <description>Validation and verification of BPMN File Learnpad</description>
+  <description>prototype of Validation and verification of BPMN File for Learnpad</description>
   
   <dependencies>
 		<dependency>
