@@ -56,7 +56,7 @@ public abstract class ABBestPractice implements BestPractice {
 		.add("description", getDescription())
 		.add("status", getStatus())
 		.add("Suggestion",getSuggestion());
-		//.add("max_term_length", this.max_term_length);
+		
 		JsonArrayBuilder collevalelem = Json.createArrayBuilder();
 		for(BPMNNode e : getElements()){
 		JsonObjectBuilder valElem = Json.createObjectBuilder()

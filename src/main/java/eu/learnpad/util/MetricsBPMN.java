@@ -59,12 +59,12 @@ public class MetricsBPMN {
 
 	@Override
 	public String toString() {
-		return "MetricsBPMN [diagram=" + diagram + ", NumberOfActivity()="
-				+ NumberOfActivity() + ", NumbersOfGateways()="
-				+ NumbersOfGateways() + ", NumbersOfStartEvents()="
-				+ NumbersOfStartEvents() + ", NumbersOfEndEvents()="
-				+ NumbersOfEndEvents() + ", NumbersOfIntermediateEvents()="
-				+ NumbersOfIntermediateEvents() + ", NumbersOfPools()="
+		return "MetricsBPMN [diagram=" + diagram + ", \n\rNumberOfActivity="
+				+ NumberOfActivity() + ", \n\rNumbersOfGateways="
+				+ NumbersOfGateways() + ", \n\rNumbersOfStartEvents="
+				+ NumbersOfStartEvents() + ", \n\rNumbersOfEndEvents="
+				+ NumbersOfEndEvents() + ", \n\rNumbersOfIntermediateEvents="
+				+ NumbersOfIntermediateEvents() + ", \n\rNumbersOfPools="
 				+ NumbersOfPools() + "]";
 	}
 	
