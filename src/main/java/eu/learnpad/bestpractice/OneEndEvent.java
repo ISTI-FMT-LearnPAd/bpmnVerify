@@ -30,10 +30,10 @@ public class OneEndEvent extends ABBestPractice{
 	}
 	
 	public  void findBadPractice(BPMNDiagram diagram){
-		int numStart=0;
+		
 		Collection<Event> tmpEvents = new ArrayList<Event>();
 		for(Event e : diagram.getEvents()){
-			if(e.getEventType()==EventType.END){
+			if(e.getEventType()==EventType.END && e.getParentSubProcess()==null){
 				tmpEvents.add(e);
 			}
 		}

@@ -26,14 +26,13 @@ public class OneStartEvent extends ABBestPractice{
 
 	public String getName() {
 		
-		return "OneStartEvent";
+		return "s";
 	}
 	
 	public  void findBadPractice(BPMNDiagram diagram){
-		int numStart=0;
 		Collection<Event> tmpEvents = new ArrayList<Event>();
 		for(Event e : diagram.getEvents()){
-			if(e.getEventType()==EventType.START){
+			if(e.getEventType()==EventType.START && e.getParentSubProcess()==null){
 				tmpEvents.add(e);
 			}
 		}
