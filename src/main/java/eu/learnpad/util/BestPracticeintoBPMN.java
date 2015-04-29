@@ -19,7 +19,7 @@ public class BestPracticeintoBPMN {
 
 
 
-	public BestPractice ExSplit(){
+/*	public BestPractice ExSplit(){
 		BestPractice es = new  Explicit_Splits();
 		for(Activity a :diagram.getActivities()){
 			if(a.getGraph().getInEdges(a).size()>1 || a.getGraph().getOutEdges(a).size()>1){
@@ -48,4 +48,5 @@ public class BestPracticeintoBPMN {
 
 		return es;
 	}
+	*/
 }

@@ -2,7 +2,6 @@ package eu.learnpad.bestpractice;
 
 import java.util.Collection;
 
-import models.graphbased.directed.bpmn.BPMNNode;
 
 /**
  * @author isiu

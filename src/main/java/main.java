@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.Collection;
 
+import eu.learnpad.bestpractice.factory.BestPracticeFactory;
 import eu.learnpad.util.MetricsBPMN;
 import models.graphbased.directed.bpmn.BPMNDiagram;
 import plugins.bpmn.Bpmn;
@@ -24,7 +25,10 @@ public class main {
 				for(BPMNDiagram graph : BPMNdiagrams){
 					System.out.println("Name of Diagrams: "+graph.getLabel());
 					MetricsBPMN metrics = new MetricsBPMN(graph);
+					BestPracticeFactory bpf = new BestPracticeFactory(graph);
 					System.out.println(metrics);
+					System.out.println("-----------------------------------------");
+					System.out.println(bpf);
 
 				}
 			}catch (Exception e) {

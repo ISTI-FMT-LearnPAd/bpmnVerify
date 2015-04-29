@@ -3,36 +3,38 @@ package eu.learnpad.bestpractice;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import models.graphbased.directed.bpmn.BPMNDiagram;
 import models.graphbased.directed.bpmn.BPMNNode;
 
 public abstract class ABBestPractice implements BestPractice {
 
-	protected  boolean status = false;
-	protected  Collection<BPMNNode> element;
+	protected  Collection<BPMNNode> elements;
 
-	ABBestPractice(){
+	ABBestPractice(BPMNDiagram diagram){
 		super();
-		element = new ArrayList<BPMNNode>();
+		elements = new ArrayList<BPMNNode>();
+		findBadPractice(diagram);
 	}
 	
 	
 	public Collection<BPMNNode> getElements() {
-		return element;
+		return elements;
 	}
 	
-	
+	protected abstract void findBadPractice(BPMNDiagram diagram);
 
 	
 	public boolean getStatus() {
 
-		return status;
+		return elements.size()>0?true:false;
 	}
 
 	public String toString(){
-		return "Name: "+getName()+" "
-				+"Description: "+getDescription()+" "
-				+"Status: "+getStatus()+" "
-				+"Element: "+getElements();
+		return "ID: "+getid()+" \n\r"
+				+"Name: "+getName()+" \n\r"
+				+"Description: "+getDescription()+" \n\r"
+				+"Status: "+getStatus()+" \n\r"
+				+"Element: "+getElements()+" \n\r";
 	}
 
 }
