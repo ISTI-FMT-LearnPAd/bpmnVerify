@@ -56,6 +56,10 @@ public class MetricsBPMN {
 	public int NumbersOfPools(){	
 		return diagram.getPools().size();
 	}
+	
+	public int NumbersOfLanes(){	
+		return diagram.getLanes(null).size();
+	}
 
 	@Override
 	public String toString() {
@@ -63,9 +67,9 @@ public class MetricsBPMN {
 				+ NumberOfActivity() + ", \n\rNumbersOfGateways="
 				+ NumbersOfGateways() + ", \n\rNumbersOfStartEvents="
 				+ NumbersOfStartEvents() + ", \n\rNumbersOfEndEvents="
-				+ NumbersOfEndEvents() + ", \n\rNumbersOfIntermediateEvents="
-				+ NumbersOfIntermediateEvents() + ", \n\rNumbersOfPools="
-				+ NumbersOfPools() + "]";
+				+ NumbersOfEndEvents() + ", \n\rNumbersOfIntermediateEvents="+ NumbersOfIntermediateEvents() 
+				+ ", \n\rNumbersOfLanes="+ NumbersOfLanes() 
+				+ ", \n\rNumbersOfPools="+ NumbersOfPools() + "]";
 	}
 	
 	
