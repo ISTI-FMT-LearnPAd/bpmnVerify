@@ -20,6 +20,7 @@ public abstract class ABBestPractice implements BestPractice {
 		super();
 		elements = new ArrayList<BPMNNode>();
 		findBadPractice(diagram);
+		
 	}
 
 
@@ -60,7 +61,7 @@ public abstract class ABBestPractice implements BestPractice {
 		JsonArrayBuilder collevalelem = Json.createArrayBuilder();
 		for(BPMNNode e : getElements()){
 		JsonObjectBuilder valElem = Json.createObjectBuilder()
-				.add("name", e.getLabel());
+				.add("name", e.toString());
 				valElem.add("id", e.getId().toString());
 				collevalelem.add(valElem);
 		}
