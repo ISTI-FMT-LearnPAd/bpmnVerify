@@ -9,7 +9,7 @@
 		<dependency>
 			<groupId>com.github.imatesiu</groupId>
 			<artifactId>ReaderBpmn</artifactId>
-			<version>v0.1</version>
+			<version>v0.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
