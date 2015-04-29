@@ -45,4 +45,8 @@ public class Explicit_Joins extends ABBestPractice {
 		}
 	}
 
+	public String getSuggestion() {
+		return "Add Gateway after ";
+	}
+
 }

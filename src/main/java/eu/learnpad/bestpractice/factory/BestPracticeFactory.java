@@ -3,8 +3,11 @@ package eu.learnpad.bestpractice.factory;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import eu.learnpad.bestpractice.*;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 
+import eu.learnpad.bestpractice.*;
 import models.graphbased.directed.bpmn.BPMNDiagram;
 
 
@@ -20,10 +23,19 @@ public class BestPracticeFactory {
 		BPcollection.add(new Explicit_Joins(diagram));
 		BPcollection.add(new OneStartEvent(diagram));
 		BPcollection.add(new OneEndEvent(diagram));
-		
+		BPcollection.add(new OneStartEventSubProcess(diagram));
+
 	}
 
-	
+	public JsonObject toJSON(){
+
+		JsonObjectBuilder val = Json.createObjectBuilder();
+		for(BestPractice bp: BPcollection){
+			val.add("best_practice"+bp.getid(), bp.getJsonBestPractice());
+		}
+		JsonObject result =  val.build();
+		return result;
+	}
 
 
 
@@ -38,6 +50,6 @@ public class BestPracticeFactory {
 		}
 		return ret;
 	}
-	
-	
+
+
 }

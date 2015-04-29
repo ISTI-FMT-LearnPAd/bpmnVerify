@@ -42,4 +42,8 @@ public class OneEndEvent extends ABBestPractice{
 		}
 	}
 
+	public String getSuggestion() {
+		return "Remove excessive End Event ";
+	}
+
 }

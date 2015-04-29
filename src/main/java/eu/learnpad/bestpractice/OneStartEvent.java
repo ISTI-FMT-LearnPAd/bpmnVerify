@@ -26,7 +26,7 @@ public class OneStartEvent extends ABBestPractice{
 
 	public String getName() {
 		
-		return "s";
+		return "OneStartEvent";
 	}
 	
 	public  void findBadPractice(BPMNDiagram diagram){
@@ -39,6 +39,10 @@ public class OneStartEvent extends ABBestPractice{
 		if(tmpEvents.size()>1){
 			elements.addAll(tmpEvents);
 		}
+	}
+	
+	public String getSuggestion() { 
+		return "Remove excessive Start Event ";
 	}
 
 }

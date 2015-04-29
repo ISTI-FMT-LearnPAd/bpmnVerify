@@ -62,7 +62,9 @@ public class Explicit_Splits extends ABBestPractice {
 
 	}
 
-	
+	public String getSuggestion() {
+		return "Add Gateway before ";
+	}
 
 
 }

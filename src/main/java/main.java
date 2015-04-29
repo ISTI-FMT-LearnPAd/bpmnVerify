@@ -29,6 +29,9 @@ public class main {
 					System.out.println(metrics);
 					System.out.println("-----------------------------------------");
 					System.out.println(bpf);
+					System.out.println("-------------------JSON----------------------");
+					System.out.println(bpf.toJSON().toString());
+					
 
 				}
 			}catch (Exception e) {

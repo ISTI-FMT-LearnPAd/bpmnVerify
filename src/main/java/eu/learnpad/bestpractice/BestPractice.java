@@ -2,6 +2,8 @@ package eu.learnpad.bestpractice;
 
 import java.util.Collection;
 
+import javax.json.JsonObject;
+
 
 /**
  * @author isiu
@@ -36,6 +38,10 @@ public interface BestPractice {
 	 * @return Status of BP
 	 */
 	boolean getStatus();
+	
+	String getSuggestion();
+	
+	JsonObject getJsonBestPractice();
 	
 	String toString();
 }
