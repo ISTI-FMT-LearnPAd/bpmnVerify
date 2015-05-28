@@ -11,6 +11,30 @@
 			<artifactId>ReaderBpmn</artifactId>
 			<version>v0.2.4</version>
 		</dependency>
+		
+  
+<dependency>
+    <groupId>org.eclipse</groupId>
+    <artifactId>org.eclipse.bpmn2</artifactId>
+    <version>0.7.0.010</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.emf</groupId>
+    <artifactId>org.eclipse.emf.common</artifactId>
+    <version>2.11.0-v20150123-0347</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.emf</groupId>
+    <artifactId>org.eclipse.emf.ecore</artifactId>
+    <version>2.11.0-v20150123-0347</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.emf</groupId>
+    <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+    <version>2.11.0-v20150123-0347</version>
+</dependency>
+
+
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.json</artifactId>
