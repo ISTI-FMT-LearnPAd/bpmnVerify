@@ -6,16 +6,22 @@ import java.util.List;
 
 import org.eclipse.bpmn2.Definitions;
 import org.eclipse.bpmn2.FlowElement;
+import org.eclipse.bpmn2.ManualTask;
+import org.eclipse.bpmn2.ReceiveTask;
 import org.eclipse.bpmn2.RootElement;
+import org.eclipse.bpmn2.SendTask;
 import org.eclipse.bpmn2.SequenceFlow;
 import org.eclipse.bpmn2.MessageFlow;
-import org.eclipse.bpmn2.di.BPMNDiagram;
+import org.eclipse.bpmn2.SubProcess;
+import org.eclipse.bpmn2.Task;
+import org.eclipse.bpmn2.UserTask;
+
 import org.eclipse.bpmn2.impl.MessageFlowImpl;
 import org.eclipse.bpmn2.impl.SequenceFlowImpl;
 import org.eclipse.bpmn2.util.Bpmn2ResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
@@ -26,22 +32,29 @@ public class MyBPMN2ModelReader {
 		//URI uri = URI.createURI("SampleProcess.bpmn");
 		Bpmn2ResourceFactoryImpl resFactory = new Bpmn2ResourceFactoryImpl();
 		Resource resource = resFactory.createResource(uri);
-		BPMNDiagram vv;
 		
 		// We need this option because all object references in the file are "by ID"
 		// instead of the document reference "URI#fragment" form.
 		HashMap<Object, Object> options = new HashMap<Object, Object>();
 		options.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, true);
-		
+
 		// Load the resource
 		resource.load(options);
-		
+
 		// This is the root element of the XML document
 		Definitions d = getDefinitions(resource);
 
 		// Print all elements contained in all Processes found
 		List<RootElement> rootElements = d.getRootElements();
 
+		int NMessageFlows = 0;
+		int NSequenceFlows = 0;
+		int NManualTasks = 0;
+		int NUserTasks = 0;
+		int NSendTasks = 0;
+		int NReceiveTasks = 0;
+		int NTasks = 0;
+		int NSubTasks = 0;
 		for (RootElement rootElement : rootElements) {
 
 
@@ -70,6 +83,7 @@ public class MyBPMN2ModelReader {
 							if (fe instanceof MessageFlowImpl) {
 								MessageFlow mf = ((MessageFlow) fe);
 								System.out.println("Message flow found.");
+								NMessageFlows++;
 							}
 							if (fe instanceof SequenceFlowImpl) {
 								SequenceFlow sf = ((SequenceFlow) fe);
@@ -81,18 +95,59 @@ public class MyBPMN2ModelReader {
 									if (sf.getTargetRef() != null)
 										target = sf.getTargetRef().getId();
 									System.out.println("Sequence Flow: " + source + " -> " + target);
+									NSequenceFlows++;
+								}
+							}else {
+								if (fe instanceof ManualTask) {
+									NManualTasks++;
+									System.out.println(fe.eClass().getName() + 
+											": name="+fe.getName()+" ID="+fe.getId());
+								}
+								if (fe instanceof UserTask) {
+									NUserTasks++;
+									System.out.println(fe.eClass().getName() + 
+											": name="+fe.getName()+" ID="+fe.getId());
+								}
+								if (fe instanceof SendTask) {
+									NSendTasks++;
+									System.out.println(fe.eClass().getName() + 
+											": name="+fe.getName()+" ID="+fe.getId());
+								}
+								if (fe instanceof ReceiveTask) {
+									NReceiveTasks++;
+									System.out.println(fe.eClass().getName() + 
+											": name="+fe.getName()+" ID="+fe.getId());
+								}
+								if(fe instanceof Task){
+									NTasks++;
+									System.out.println(fe.eClass().getName() + 
+											": name="+fe.getName()+" ID="+fe.getId());
+								}
+								if(fe instanceof SubProcess){
+									NSubTasks++;
+									System.out.println(fe.eClass().getName() + 
+											": name="+fe.getName()+" ID="+fe.getId());
+								}
+								else {
+									System.out.println(fe.eClass().getName()+": name="+fe.getName()+" ID="+fe.getId());
 								}
 							}
-							else {
-								System.out.println(fe.eClass().getName()+": name="+fe.getName()+" ID="+fe.getId());
-							}
+
 						}
 
-					}
 
+					}
+			System.out.println("\nTotal number of Message flows in the process = " + NMessageFlows);
+			System.out.println("Total number of sequence flows in the process = " + NSequenceFlows);
+			System.out.println("Total number of manual tasks in the process = " + NManualTasks);
+			System.out.println("Total number of user tasks in the process = " + NUserTasks);
+			System.out.println("Total number of send tasks in the process = " + NSendTasks);
+			System.out.println("Total number of receive tasks in the process = " + NReceiveTasks);
+			System.out.println("Total number of Subprocess tasks in the process = " + NSubTasks);
+			System.out.println("Total number of tasks in the process = " + NTasks);
 		}
 	}
-	
+
 	private static Definitions getDefinitions(Resource resource) {
 		if (resource!=null && !resource.getContents().isEmpty() && !((EObject) resource.getContents().get(0)).eContents().isEmpty()) {
 			// Search for a Definitions object in this Resource
